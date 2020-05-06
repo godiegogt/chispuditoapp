@@ -16,7 +16,8 @@ import {
   StatusBar,
   Image,
   TextInput,
-  Button
+  Button,
+  TouchableOpacity 
 } from 'react-native';
 
 import {
@@ -27,6 +28,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import PrincipalButton  from './src/Components/elements/PrincipalButton';
+
+
 //import GradientButton from 'react-native-gradient-buttons';
 
 
@@ -36,17 +40,16 @@ const App=class App extends React.Component {
   render() {
     return (
       <View style={styles.Container}>
-        <View style={{...styles.Section,...styles.Logo}}>
+      
        <Image
         style={styles.Logo}
         source={{
-          uri: 'https://reactnative.dev/img/tiny_logo.png',
+          uri: 'https://img1.wsimg.com/isteam/ip/d13a6ddb-2dbe-4333-ae86-2885934529c1/principallogotipo.PNG',
         }}
       />
 
 
-        </View >
-        <View style={{...styles.Section,backgroundColor:"#ffffff"}>
+        
         <TextInput placeholder="correo electrónico o teléfono" textAlign={'center'} 
           style={{ height: 40, borderColor: '#0E8AA9', borderWidth: 1 ,...styles.InputLogin}}
 
@@ -56,15 +59,18 @@ const App=class App extends React.Component {
 
         />
 
+        <Button borderRadius="4" color="#0E8AA9" style={{...styles.ButtonLogin}} title="Login" />
+        
+        <TouchableOpacity >
+          <Text>¿Olvidaste tu contraseña?</Text>
+        </TouchableOpacity>
+
+
+
+
+        
+
  
-
-
-
-   
-        </View>
-        <View style={styles.Section}>
-          
-        </View>
       </View>
     );
   }
@@ -81,7 +87,12 @@ const styles = StyleSheet.create({
   Container:{
     flex:1,
     fontFamily:"Segoe UI",
-    color:'#707070'
+    color:'#707070',
+    paddingLeft:50,
+    paddingRight:50,
+    paddingTop:50,
+    alignItems:"center"
+  
 
 
     
@@ -90,10 +101,20 @@ const styles = StyleSheet.create({
   InputLogin:{
     borderColor:"#0E8AA9",
     borderRadius:20,
-    fontSize:14,
+    fontSize:18,
     marginBottom:35,
-    borderWidth:2
+    borderWidth:2,
+    width:'100%'
   },
+
+  ButtonLogin:{
+  borderRadius:20,
+  marginBottom:40,
+  color:'#0E8AA9',
+  backgroundColor:"#0E8AA9",
+  width:'100%'
+
+    },
 
   
 
