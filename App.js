@@ -46,7 +46,7 @@ const App=class App extends React.Component {
 
 
         </View >
-        <View style={{...styles.Section,backgroundColor:white}}>
+        <View style={{...styles.Section,backgroundColor:"#ffffff"}>
         <TextInput placeholder="correo electrónico o teléfono" textAlign={'center'} 
           style={{ height: 40, borderColor: '#0E8AA9', borderWidth: 1 ,...styles.InputLogin}}
 
