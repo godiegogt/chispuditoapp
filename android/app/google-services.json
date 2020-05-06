@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "320830175378",
+    "firebase_url": "https://chispuditoappgt.firebaseio.com",
+    "project_id": "chispuditoappgt",
+    "storage_bucket": "chispuditoappgt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320830175378:android:2b7e4c780d173ed0e9ce4b",
+        "android_client_info": {
+          "package_name": "com.chispuditoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320830175378-aee7fl6a924ai5s8j8qo3bpisdk58p73.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALnDkPWjjQdgmifAxuuyxJtOBbt_4M_5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320830175378-aee7fl6a924ai5s8j8qo3bpisdk58p73.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
