@@ -10,23 +10,17 @@ import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
+
   View,
   Text,
   StatusBar,
   Image,
   TextInput,
-  Button,
+  ScrollView,
   TouchableOpacity 
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { Container, Header, Content, Button,Icon } from 'native-base';
 
 import PrincipalButton  from './src/Components/elements/PrincipalButton';
 
@@ -59,11 +53,38 @@ const App=class App extends React.Component {
 
         />
 
-        <Button borderRadius="4" color="#0E8AA9" style={{...styles.ButtonLogin}} title="Login" />
+        <Button  color="#0E8AA9" style={{...styles.ButtonLogin}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#ffffff"}}>Login</Text></Button>
+
         
         <TouchableOpacity >
           <Text>¿Olvidaste tu contraseña?</Text>
         </TouchableOpacity>
+        <Button  bordered style={{...styles.CrearcuentaButton}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#038aa9"}}>Crear cuenta</Text></Button>
+
+
+          
+          <ScrollView>
+          <Button iconLeft light>
+            <Icon name='arrow-back' />
+            <Text>Back</Text>
+          </Button>
+          <Button iconRight light>
+            <Text>Next</Text>
+            <Icon name='arrow-forward' />
+          </Button>
+          <Button iconLeft>
+            <Icon name='home' />
+            <Text>Home</Text>
+          </Button>
+          <Button iconLeft transparent primary>
+            <Icon name='beer' />
+            <Text>Pub</Text>
+          </Button>
+          <Button iconLeft dark>
+            <Icon name='cog' />
+            <Text>Settings</Text>
+          </Button>
+          </ScrollView>
 
 
 
@@ -90,7 +111,7 @@ const styles = StyleSheet.create({
     color:'#707070',
     paddingLeft:50,
     paddingRight:50,
-    paddingTop:50,
+    paddingTop:10,
     alignItems:"center"
   
 
@@ -102,19 +123,43 @@ const styles = StyleSheet.create({
     borderColor:"#0E8AA9",
     borderRadius:20,
     fontSize:18,
-    marginBottom:35,
+    marginBottom:30,
     borderWidth:2,
     width:'100%'
   },
 
   ButtonLogin:{
   borderRadius:20,
-  marginBottom:40,
+  marginBottom:10,
   color:'#0E8AA9',
   backgroundColor:"#0E8AA9",
-  width:'100%'
+  width:'100%',
+  alignItems:'center',
+  flexDirection:"column",
+  color:"#ffffff",
+ 
 
     },
+
+  CrearcuentaButton:{
+    borderWidth:5,
+    borderColor:"#0e8aa9",
+    borderRadius:20,
+    width:'100%',
+    alignItems:'center',
+  flexDirection:"column",
+  marginTop:30,
+  marginBottom:30
+  },
+
+  redeslogin:{
+    
+    borderRadius:20,
+    width:'100%',
+  marginBottom:30,
+  justifyContent:'flex-start'
+ 
+  },
 
   
 
@@ -123,44 +168,6 @@ const styles = StyleSheet.create({
     
     paddingLeft:45,
     paddingRight:45
-  },
-
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
   },
 });
 
