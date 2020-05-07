@@ -1,6 +1,6 @@
 import React from 'react';
 import {  StyleSheet,Button,TouchableOpacity,Text  } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+//import LinearGradient from 'react-native-linear-gradient';
 
 class PrincipalButton extends React.Component {
     constructor(props) {
@@ -10,9 +10,7 @@ class PrincipalButton extends React.Component {
     render() {
         return (
             <TouchableOpacity style={styles.button}>
-            <LinearGradient colors={['#003192', '#0E8AA9']} style={styles.gradient}>
-              <Text style={styles.text}>Gradient Button</Text>
-            </LinearGradient>
+            
             </TouchableOpacity>
         );
     }
