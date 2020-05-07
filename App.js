@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React,{useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -19,6 +19,7 @@ import {
 
   TouchableOpacity 
 } from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 import { Container, Header, Content, Button,Icon } from 'native-base';
 
@@ -36,14 +37,43 @@ import TapBarCustomer from './src/Components/views/TapBarCustomer';
 const Stack = createStackNavigator();
 
 const App=class App extends React.Component {
-  state = {  };
+
+  
+
+
+  state = { 
+    Login:true,
+    usertype:1
+   };
+
+   renderContent=()=>{
+     if (state.Login) {
+      <Stack.Screen options={{headerShown: false}} name="TapBarCustomer" component={TapBarCustomer} />
+     } else {
+      <Stack.Screen options={{headerShown: false}} name="Login" component={Login} />
+     }
+   }
   
   render() {
+
+      // Set an initializing state whilst Firebase connects
+
+var user=false;
+
+
     return (
 <NavigationContainer>
       <Stack.Navigator>
-       
-        <Stack.Screen options={{headerShown: false}} name="TapBarCustomer" component={TapBarCustomer} />
+  
+      {user?(
+         <Stack.Screen options={{headerShown: false}} name="TapBarCustomer" component={TapBarCustomer} />
+
+      ):(
+        <Stack.Screen options={{headerShown: false}} name="Login" component={Login} />
+      )
+
+      }
+        
       </Stack.Navigator>
     </NavigationContainer>
     );
