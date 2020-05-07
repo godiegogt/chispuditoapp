@@ -45,7 +45,9 @@ Login(){
       spinner:false
     })
     console.log(g);
-    this.state.navigation.navigate('TapBarCustomer');
+
+    
+    this.props.navigation.navigate('TapBarCustomer');
   }).catch(err=>{
 
     this.setState({
@@ -80,7 +82,7 @@ email:email
       <View style={styles.Container}>
       <Spinner
                 visible={this.state.spinner}
-                textContent={'Loading...'}
+                textContent={'Cargando...'}
                 textStyle={styles.spinnerTextStyle}
               />
 

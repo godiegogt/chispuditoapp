@@ -38,7 +38,29 @@ const Stack = createStackNavigator();
 
 const App=class App extends React.Component {
 
-  
+  constructor(props){
+    super(props);
+    this.state={
+      user:{}
+    }
+  };
+
+ 
+
+
+
+  UNSAFE_componentWillMount() {
+    auth().onAuthStateChanged(user => {
+      this.setState({
+        user:user
+      })
+
+      console.log("---------------App");
+      console.log(this.state.user);
+      });
+  }
+
+
 
 
   state = { 
@@ -58,21 +80,19 @@ const App=class App extends React.Component {
 
       // Set an initializing state whilst Firebase connects
 
-var user=false;
+
 
 
     return (
 <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName={this.state.user?"TapBarCustomer":"Login"}>
   
-      {user?(
+    
          <Stack.Screen options={{headerShown: false}} name="TapBarCustomer" component={TapBarCustomer} />
 
-      ):(
+   
         <Stack.Screen options={{headerShown: false}} name="Login" component={Login} />
-      )
-
-      }
+  
         
       </Stack.Navigator>
     </NavigationContainer>
