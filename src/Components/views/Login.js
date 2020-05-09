@@ -18,12 +18,13 @@ import {
 import { Container, Header, Content, Button,Icon } from 'native-base';
 import Spinner from 'react-native-loading-spinner-overlay';
 import auth from '@react-native-firebase/auth';
-
-
+import {AuthContext} from '../../utils/authContext'
+/*
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {user:{}, email:"",password:"",spinner:false,navigation:props.navigation };
+    this.state = {user:{}, email:"",password:"",spinner:false,navigation:props.navigation,
+    signIn:React.useContext(AuthContext).signIn };
   };
   componentDidMount(){
 
@@ -104,13 +105,13 @@ email:email
 
      />
 
-     <Button onPress={() => this.Login()}  color="#0E8AA9" style={{...styles.ButtonLogin}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#ffffff"}}>Login</Text></Button>
+     <Button onPress={this.signIn({email:this.state.email,password:this.state.password})}  color="#0E8AA9" style={{...styles.ButtonLogin}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#ffffff"}}>Login</Text></Button>
 
      
      <TouchableOpacity >
        <Text>¿Olvidaste tu contraseña?</Text>
      </TouchableOpacity>
-     <Button  bordered style={{...styles.CrearcuentaButton}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#038aa9"}}>Crear cuenta</Text></Button>
+     <Button onPress={()=>{this.props.navigation.navigate('SignIn');}}  bordered style={{...styles.CrearcuentaButton}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#038aa9"}}>Crear cuenta</Text></Button>
 
      <Button iconLeft style={{...styles.redeslogin}}>
        <Text style={{fontSize:18,color:"#ffffff",marginLeft:30}}>Continuar con facebook</Text>
@@ -124,7 +125,59 @@ email:email
       
     );
   }
+}*/
+
+function Login() {
+
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const { signIn } = React.useContext(AuthContext);
+
+  return(
+    <View style={styles.Container}>
+ 
+
+  <Image
+   style={styles.Logo}
+   source={{
+     uri: 'https://img1.wsimg.com/isteam/ip/d13a6ddb-2dbe-4333-ae86-2885934529c1/principallogotipo.PNG',
+   }}
+ />
+
+
+   
+   <TextInput value={email}  onChangeText={setEmail} placeholder="correo electrónico o teléfono" textAlign={'center'} 
+     style={{ height: 40, borderColor: '#0E8AA9', borderWidth: 1 ,...styles.InputLogin}}
+
+   />
+    <TextInput value={password} onChangeText={setPassword} placeholder="contraseña" textAlign={'center'} 
+     style={{height: 40, borderColor: '#0E8AA9', borderWidth: 1 ,...styles.InputLogin}}
+
+   />
+
+   <Button onPress={() => signIn({ email, password })}  color="#0E8AA9" style={{...styles.ButtonLogin}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#ffffff"}}>Login</Text></Button>
+
+   
+   <TouchableOpacity >
+     <Text>¿Olvidaste tu contraseña?</Text>
+   </TouchableOpacity>
+   <Button onPress={()=>{props.navigation.navigate('SignIn');}}  bordered style={{...styles.CrearcuentaButton}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#038aa9"}}>Crear cuenta</Text></Button>
+
+   <Button iconLeft style={{...styles.redeslogin}}>
+     <Text style={{fontSize:18,color:"#ffffff",marginLeft:30}}>Continuar con facebook</Text>
+   </Button>
+
+   <Button   style={{...styles.ButtonGoogle}} title="Continuar con Google" >
+       <Text style={{fontSize:18,color:"#ffffff",marginLeft:30}}>Continuar con Google</Text>
+   </Button>
+
+ </View>
+  )
+  
 }
+
+
 
 
        

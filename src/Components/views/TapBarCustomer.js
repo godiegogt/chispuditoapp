@@ -9,6 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeCustomer from './HomeCustomer';
 import OrdersCustomer from './OrdersCustomer';
 import ProfileCustomer from './ProfileCustomer';
+import auth from '@react-native-firebase/auth';
 
 function IconWithBadge({ name, badgeCount, color, size }) {
   return (
@@ -46,6 +47,8 @@ function ProfileIconWithBadge(props) {
 
 const Tab = createBottomTabNavigator();
 function TabBarCustomer({ navigation }) {
+ console.log(auth().onAuthStateChanged(user => {user}));
+  
     return (
       <Tab.Navigator   
       screenOptions={({ route }) => ({
