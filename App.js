@@ -35,6 +35,8 @@ import  MenuAuth from './src/Components/views/MenuAuth';
 
 import TapBarCustomer from './src/Components/views/TapBarCustomer';
 
+import Spinner from 'react-native-loading-spinner-overlay';
+
 
 //import GradientButton from 'react-native-gradient-buttons';
 const Stack = createStackNavigator();
@@ -130,6 +132,7 @@ export default function App(){
   );
 // console.info("Mi usuario");
 const [initializing, setInitializing] = useState(true);
+const [isLoading, setIsLoading] = useState(false);
 
    function onAuthStateChanged(user) {
     console.log("--userToken--");
@@ -157,6 +160,7 @@ const [initializing, setInitializing] = useState(true);
         // In the example, we'll use a dummy token}
  
        // console.log(user);
+       setIsLoading(true);
         auth().signInWithEmailAndPassword(user.email,user.password).then(g=>{
 
 
@@ -164,25 +168,19 @@ const [initializing, setInitializing] = useState(true);
           console.log('Autenticado');
           console.log(g);
           dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+          setIsLoading(false);
           
           //this.props.navigation.navigate('TapBarCustomer');
         }).catch(err=>{
+          setIsLoading(false);
       
            console.log(err);
            Alert.alert(
-            'Alert Title',
-            'My Alert Msg',
+            'Login',
+            'Sus datos son incorrectos, por favor verifíquelos e inténtelo de nuevo.',
             [
-              {
-                text: 'Ask me later',
-                onPress: () => console.log('Ask me later pressed')
-              },
-              {
-                text: 'Cancel',
-                onPress: () => console.log('Cancel Pressed'),
-                style: 'cancel'
-              },
-              { text: 'OK', onPress: () => console.log('OK Pressed') }
+     
+              { text: 'OK', onPress: () => console.log('Ok') }
             ],
             { cancelable: false }
           );
@@ -208,6 +206,20 @@ const [initializing, setInitializing] = useState(true);
     []
   );
 
+  if (isLoading) {
+    // We haven't finished checking for the token yet
+    return (
+      <View style={styles.container}>
+        <Spinner
+          visible={true}
+          textContent={'Loading...'}
+          textStyle={styles.spinnerTextStyle}
+        />
+
+      </View>
+    )
+  }
+
   return (
     <AuthContext.Provider value={authContext}>
           <NavigationContainer>
@@ -224,3 +236,24 @@ const [initializing, setInitializing] = useState(true);
         );
 
 }
+const styles = StyleSheet.create({
+  spinnerTextStyle: {
+    color: '#FFF'
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF'
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5
+  }
+});

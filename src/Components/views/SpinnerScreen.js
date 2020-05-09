@@ -4,7 +4,7 @@ function SpinnerScreen() {
     return(
         <View style={styles.container}>
         <Spinner
-          visible={this.state.spinner}
+          visible={true}
           textContent={'Cargando...'}
           textStyle={styles.spinnerTextStyle}
         />

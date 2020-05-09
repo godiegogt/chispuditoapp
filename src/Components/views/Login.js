@@ -131,12 +131,24 @@ function Login() {
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [isLoading, setLoading] = React.useState(false);
 
   const { signIn } = React.useContext(AuthContext);
 
+  function Login(user){
+
+    setLoading(true);
+    signIn(user);
+
+  }
+
   return(
     <View style={styles.Container}>
- 
+          <Spinner
+            visible={isLoading}
+            textContent={'Loading...'}
+            textStyle={styles.spinnerTextStyle}
+        />
 
   <Image
    style={styles.Logo}
@@ -156,7 +168,7 @@ function Login() {
 
    />
 
-   <Button onPress={() => signIn({ email, password })}  color="#0E8AA9" style={{...styles.ButtonLogin}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#ffffff"}}>Login</Text></Button>
+   <Button onPress={() => Login({ email, password })}  color="#0E8AA9" style={{...styles.ButtonLogin}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#ffffff"}}>Login</Text></Button>
 
    
    <TouchableOpacity >
