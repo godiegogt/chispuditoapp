@@ -127,28 +127,16 @@ email:email
   }
 }*/
 
-function Login() {
+function Login({navigation}) {
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [isLoading, setLoading] = React.useState(false);
 
   const { signIn } = React.useContext(AuthContext);
 
-  function Login(user){
-
-    setLoading(true);
-    signIn(user);
-
-  }
-
   return(
     <View style={styles.Container}>
-          <Spinner
-            visible={isLoading}
-            textContent={'Loading...'}
-            textStyle={styles.spinnerTextStyle}
-        />
+
 
   <Image
    style={styles.Logo}
@@ -168,13 +156,13 @@ function Login() {
 
    />
 
-   <Button onPress={() => Login({ email, password })}  color="#0E8AA9" style={{...styles.ButtonLogin}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#ffffff"}}>Login</Text></Button>
+   <Button onPress={() => signIn({ email, password })}  color="#0E8AA9" style={{...styles.ButtonLogin}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#ffffff"}}>Login</Text></Button>
 
    
    <TouchableOpacity >
      <Text>¿Olvidaste tu contraseña?</Text>
    </TouchableOpacity>
-   <Button onPress={()=>{props.navigation.navigate('SignIn');}}  bordered style={{...styles.CrearcuentaButton}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#038aa9"}}>Crear cuenta</Text></Button>
+   <Button onPress={()=>{navigation.navigate('NormalSignIn');}}  bordered style={{...styles.CrearcuentaButton}} title="Login" ><Text style={{alignSelf:"center",fontSize:18,color:"#038aa9"}}>Crear cuenta</Text></Button>
 
    <Button iconLeft style={{...styles.redeslogin}}>
      <Text style={{fontSize:18,color:"#ffffff",marginLeft:30}}>Continuar con facebook</Text>
