@@ -186,7 +186,7 @@ const [isLoading, setIsLoading] = useState(false);
           );
       
         });
-
+        setIsLoading(false);
         
       },
       signOut: async () => {
